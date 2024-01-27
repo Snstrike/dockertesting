@@ -1,0 +1,43 @@
+[
+    {
+        "id": 1,
+        "nombre": "Persa",
+        "origen": "Oriente Medio",
+        "pelaje": "Largo",
+        "patron": "Tabby",
+        "descripcion": "El Persa es una raza de gato grande con un pelaje largo y suave. Son conocidos por su temperamento tranquilo y amigable."
+    },
+    {
+        "id": 2,
+        "nombre": "Siamés",
+        "origen": "Asia",
+        "pelaje": "Corto",
+        "patron": "Punto",
+        "descripcion": "Los Siamés son conocidos por su color blanco y negro distintivo. Son conocidos por su temperamento independiente y curioso."
+    },
+    {
+        "id": 3,
+        "nombre": "Ragdoll",
+        "origen": "Estados Unidos",
+        "pelaje": "Largo",
+        "patron": "Tabby",
+        "descripcion": "Los Ragdoll son conocidos por su temperamento relajado y juguetón. Son excelentes para acariciar y jugar."
+    },
+    {
+        "id": 4,
+        "nombre": "Bengala",
+        "origen": "Estados Unidos",
+        "pelaje": "Corto",
+        "patron": "Moteado",
+        "descripcion": "El Bengala es conocido por su pelaje corto y moteado. Son conocidos por su temperamento vivo y juguetón."
+    },
+    {
+        "id": 5,
+        "nombre": "Siberiano",
+        "origen": "Rusia",
+        "pelaje": "Largo",
+        "patron": "Solido",
+        "descripcion": "El Siberiano es conocido por su pelaje largo y suave. Son conocidos por su temperamento fuerte y tranquilo."
+    }
+]
+

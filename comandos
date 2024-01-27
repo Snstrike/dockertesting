@@ -1,5 +1,0 @@
-Construye la imagen de Docker utilizando el siguiente comando en la interfaz de línea de comandos (CLI) desde la carpeta app
-docker build -t "nombre" .
-
-Corre la imagen 
-docker run -d -p 5000:5000 "nombre"
