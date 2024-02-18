@@ -45,10 +45,3 @@ La aplicación Flask proporciona un catálogo de razas de gatos, permitiendo rea
 - MongoDB
 - Docker
 
-## Endpoints de la API
-
-- **GET /api/v1/cat_breeds/all**: Obtiene todas las razas de gatos almacenadas en la base de datos.
-- **GET /api/v1/cat_breeds/new**: Formulario para agregar una nueva raza de gato.
-- **POST /api/v1/cat_breeds/new**: Agrega una nueva raza de gato a la base de datos.
-- **GET /api/v1/cat_breeds/delete/{id}**: Muestra un formulario de confirmación para eliminar una raza de gato por su ID.
-- **POST /api/v1/cat_breeds/delete/{id}**: Elimina una raza de gato de la base de datos por su ID.

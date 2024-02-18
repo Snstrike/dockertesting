@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  namespace: db-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: db-container
+        image: mongo
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: data-volume
+          mountPath: /data/db
+      volumes:
+      - name: data-volume
+        emptyDir: {}

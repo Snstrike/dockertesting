@@ -11,6 +11,9 @@ razas_de_gatos = db.razas_de_gatos
 
 @app.route('/', methods=['GET'])
 def home():
+
+    print("docker testing completed")
+    
     return '''
         <h1>Catálogo de Razas de Gatos</h1>
         <p>Una implementación de API Flask para información sobre razas de gatos.</p>
