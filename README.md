@@ -4,39 +4,74 @@ Este proyecto consiste en una implementación de una API REST sencilla utilizand
 
 ## Descripción
 
-La aplicación Flask proporciona un catálogo de razas de gatos, permitiendo realizar operaciones básicas como ver todas las razas, agregar una nueva raza y eliminar una raza existente. La base de datos MongoDB se utiliza para almacenar la información de las razas de gatos.
+El proyecto consiste en una aplicación web sencilla desarrollada con Flask, un framework de Python para construir aplicaciones web. La aplicación puede ser empaquetada dentro de un contenedor Docker y gestionada utilizando Kubernetes.
 
-## Estructura del Proyecto
+La aplicación Flask implementa una API básica que responde a las solicitudes HTTP con un mensaje de saludo. Esta API puede ser accedida mediante una solicitud HTTP GET al endpoint raíz /.
 
-- **app.py**: El archivo principal que contiene la implementación de la API utilizando Flask y la conexión a la base de datos MongoDB.
-- **docker-compose.yml**: Archivo de configuración de Docker Compose que define los servicios web y de base de datos, así como sus configuraciones.
-- **Dockerfile**: Archivo de configuración para la construcción de la imagen Docker que contiene la aplicación Flask.
-- **requirements.txt**: Archivo que especifica las dependencias de Python necesarias para la aplicación Flask.
-- **data/**: Carpeta para almacenar los datos de la base de datos MongoDB.
-- **venv/**: Carpeta para el entorno virtual de Python (no recomendado incluir en repositorios).
+Para facilitar la ejecución y gestión de la aplicación, se proporcionan archivos de configuración para Kubernetes en los directorios app y db. Estos archivos permiten desplegar la aplicación y la base de datos en un clúster de Kubernetes de manera sencilla.
+
+El objetivo principal del proyecto es demostrar cómo utilizar Flask junto con Docker y Kubernetes para desarrollar, empaquetar y desplegar aplicaciones web de manera eficiente y escalable.
 
 ## Instalación
 
 1. Clona este repositorio en tu máquina local:
 
+   ```bash
+   git clone https://github.com/Snstrike/dockertesting
+   ```
+2. Descarga la imagen de Docker desde Docker Hub:
+
+   ```bash
+   docker pull ferolmos17/dockertesting-api:1.0
+   ```
+3. Inicia el contenedor Docker con el siguiente comando:
+
+   ```bash
+   docker run -d -p 5000:5000 ferolmos17/dockertesting-api:1.0
+   ```
+4. Iniciar Kubernetes
+
+   ```bash
+   minikube start
+   ```
+5. Crear los espacios de nombres necesarios
+
+   ```bash
+   kubectl create namespace api-namespace
+   kubectl create namespace db-namespace
+   ```
+6. Aplicar los archivos de configuración para el despliegue de la aplicación
+
+   ```bash
+   kubectl apply -f app/deployment.yml
+   kubectl apply -f app/service.yml
+   ```
+7. Aplicar el archivo de configuración para el despliegue de la base de datos
+
+   ```bash
+   kubectl apply -f db/deployment.yml
+   ```
+8. Verificar que los pods y servicios estén en ejecución
+
+   ```bash
+   kubectl get pods -n api-namespace
+   kubectl get pods -n db-namespace
+   kubectl get services -n api-namespace
+   ```
+9. Configurar el reenvío de puertos para acceder al servicio de la API
+
+   ```bash
+   kubectl port-forward service/api-service 8080:80 -n api-namespace
+   ```
+10. Realizar una solicitud curl para probar la API
+
     ```bash
-    git clone https://github.com/Snstrike/dockertesting
+    curl http://localhost:8080
     ```
 
-2. Asegúrate de tener Docker y Docker Compose instalados en tu sistema. Puedes encontrar instrucciones de instalación en la [documentación oficial de Docker](https://docs.docker.com/get-docker/) y en la [documentación oficial de Docker Compose](https://docs.docker.com/compose/install/).
+## Evidencias
 
-    ```bash
-    docker --version
-    docker-compose --version
-    ```
-
-3. Navega hasta el directorio del proyecto y levanta los servicios utilizando Docker Compose:
-
-    ```bash
-    docker-compose up
-    ```
-
-4. Una vez que los contenedores estén en funcionamiento, puedes acceder a la API en [http://localhost:5000](http://localhost:5000).
+![1708244805412](image/README/1708244805412.png)![1708244818950](image/README/1708244818950.png)
 
 ## Tecnologías Utilizadas
 
@@ -44,4 +79,4 @@ La aplicación Flask proporciona un catálogo de razas de gatos, permitiendo rea
 - Flask
 - MongoDB
 - Docker
-
+- Kubernetes
